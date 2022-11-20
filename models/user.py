@@ -6,6 +6,7 @@ from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+from hashlib import md5
 
 
 class User(BaseModel, Base):
@@ -40,4 +41,4 @@ class User(BaseModel, Base):
         '''
             fset the password with hash
         '''
-        self.password = hashlib.md5(value.encode('utf8')).hexdigest()
+        self.password = md5(value.encode('utf8')).hexdigest()
